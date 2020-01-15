@@ -11,17 +11,31 @@ import { EntryService } from './entry.service'
 import { AppRouterModule } from 'src/app-router.module';
 import { HttpClientModule } from '@angular/common/http';
 
+// MaterialDesign
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatInputModule, MatCardModule, MatSelectModule, MatToolbarModule } from '@angular/material';
+import { MatTableModule } from '@angular/material/table';
+import { NewEntryComponent } from './new-entry/new-entry.component';
+
+// Forms
+import { ReactiveFormsModule } from '@angular/forms'
+
 @NgModule({
   declarations: [
     AppComponent,
     EntriesComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    NewEntryComponent
   ],
   imports: [
     BrowserModule,
     AppRouterModule,
-    HttpClientModule
+    HttpClientModule,
+    // Material
+    BrowserAnimationsModule, MatButtonModule, MatTableModule,
+    MatInputModule, MatCardModule, MatSelectModule, MatToolbarModule, 
+    ReactiveFormsModule
   ],
   providers: [EntryService],
   bootstrap: [AppComponent]
