@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Type } from '../interfaces/Type';
 import { EntryService } from '../entry.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-entry',
@@ -15,7 +16,8 @@ export class NewEntryComponent {
     { value: false, display: 'Income'}
   ] 
 
-  constructor(private service:EntryService) { }
+  constructor(private service:EntryService,
+    private router: Router) { }
 
   entryForm = new FormGroup({
     description: new FormControl('', Validators.required),
@@ -27,6 +29,7 @@ export class NewEntryComponent {
     console.log(this.entryForm.value);
     this.service.createEntry(this.entryForm.value).subscribe((data) => {
       console.log(data);
+      this.router.navigate(['/']);
     });
   }
 }

@@ -12,11 +12,23 @@ export class EntryService {
 
   }
 
+  getEntry(id) {
+    return this.http.get(this.baseUrl + "/" + id);
+  }
+
   getAll() {
     return this.http.get(this.baseUrl);
   }
 
   createEntry(entry) {
     return this.http.post(this.baseUrl, entry);
+  }
+
+  updateEntry(id, entry) {
+    return this.http.put(this.baseUrl + '/' + id, entry);
+  }
+
+  deleteEntry(id) {
+    return this.http.delete(this.baseUrl + '/' + id);
   }
 }

@@ -13,13 +13,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 // MaterialDesign
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatInputModule, MatCardModule, MatSelectModule, MatToolbarModule, MatDialogModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatCardModule, MatSelectModule, MatToolbarModule, MatDialogModule, MatListModule } from '@angular/material';
 import { MatTableModule } from '@angular/material/table';
 import { NewEntryComponent } from './new-entry/new-entry.component';
 
 // Forms
 import { ReactiveFormsModule } from '@angular/forms';
-import { UpdateEntryComponent } from './update-entry/update-entry.component'
+import { UpdateEntryComponent } from './update-entry/update-entry.component';
+import { DeleteEntryComponent } from './delete-entry/delete-entry.component'
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { UpdateEntryComponent } from './update-entry/update-entry.component'
     FooterComponent,
     HeaderComponent,
     NewEntryComponent,
-    UpdateEntryComponent
+    UpdateEntryComponent,
+    DeleteEntryComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,7 @@ import { UpdateEntryComponent } from './update-entry/update-entry.component'
     HttpClientModule,
     // Material
     BrowserAnimationsModule, MatButtonModule, MatTableModule,
-    MatInputModule, MatCardModule, MatSelectModule, MatToolbarModule, MatDialogModule,
+    MatInputModule, MatCardModule, MatSelectModule, MatToolbarModule, MatDialogModule, MatListModule,
     ReactiveFormsModule
   ],
   entryComponents: [UpdateEntryComponent],

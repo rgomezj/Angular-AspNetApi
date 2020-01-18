@@ -29,6 +29,23 @@ namespace ExpensesAPI.Controllers
             }
         }
 
+        public IHttpActionResult GetEntry(int id)
+        {
+            try
+            {
+                using (var dbContext = new AppDBContext())
+                {
+                    var entry = dbContext.Entries.FirstOrDefault(c => c.Id == id);
+                    if (entry == null) { return NotFound(); }
+                    return Ok(entry);
+                }
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
         [HttpPost]
         public IHttpActionResult PostEntry([FromBody] Entry entry)
         {
@@ -52,7 +69,7 @@ namespace ExpensesAPI.Controllers
         }
 
         [HttpPut]
-        public IHttpActionResult PostEntry(int id, [FromBody] Entry entry)
+        public IHttpActionResult UpdateEntry(int id, [FromBody] Entry entry)
         {
             try
             {
@@ -75,6 +92,27 @@ namespace ExpensesAPI.Controllers
                     oldEntry.Value = entry.Value;
                     dbContext.SaveChanges();
                     return Ok("Entry was updated");
+                }
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+        [HttpDelete]
+        public IHttpActionResult DeleteEntry(int id)
+        {
+            try
+            {
+                using (var dbContext = new AppDBContext())
+                {
+                    var deleteEntry = dbContext.Entries.FirstOrDefault(c => c.Id == id);
+                    if (deleteEntry == null) { return NotFound(); }
+
+                    dbContext.Entries.Remove(deleteEntry);
+                    dbContext.SaveChanges();
+                    return Ok("Entry was deleted");
                 }
             }
             catch (Exception ex)
