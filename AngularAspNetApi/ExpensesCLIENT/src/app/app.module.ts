@@ -8,8 +8,10 @@ import { HeaderComponent } from './header/header.component';
 
 // Services
 import { EntryService } from './entry.service'
+import { AuthService } from './auth.service'
 import { AppRouterModule } from 'src/app-router.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ServiceUtils } from './common/serviceUtils'
 
 // MaterialDesign
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,7 +22,8 @@ import { NewEntryComponent } from './new-entry/new-entry.component';
 // Forms
 import { ReactiveFormsModule } from '@angular/forms';
 import { UpdateEntryComponent } from './update-entry/update-entry.component';
-import { DeleteEntryComponent } from './delete-entry/delete-entry.component'
+import { DeleteEntryComponent } from './delete-entry/delete-entry.component';
+import { RegisterComponent } from './register/register.component'
 
 @NgModule({
   declarations: [
@@ -30,7 +33,8 @@ import { DeleteEntryComponent } from './delete-entry/delete-entry.component'
     HeaderComponent,
     NewEntryComponent,
     UpdateEntryComponent,
-    DeleteEntryComponent
+    DeleteEntryComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,7 @@ import { DeleteEntryComponent } from './delete-entry/delete-entry.component'
     ReactiveFormsModule
   ],
   entryComponents: [UpdateEntryComponent],
-  providers: [EntryService],
+  providers: [EntryService, AuthService, ServiceUtils],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
